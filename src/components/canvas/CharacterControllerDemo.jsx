@@ -4,11 +4,8 @@ import { Physics } from "@react-three/rapier";
 import PhysicsFloor from "./PhysicsFloor";
 import PhysicsPlatforms from "./PhysicsPlatforms";
 import RigidObjects from "./RigidObjects";
-import Slopes from "./Slopes";
-import { Suspense, useEffect, useMemo, useState } from "react";
-import { SchoolStairs } from "./SchoolStairs";
+import { useEffect, useMemo, useState } from "react";
 import { Stairs } from "./Stairs";
-//import CharacterController2 from "./CharacterController2";
 
 const CharacterControllerDemo = () => {
 	const [pausedPhysics, setPausedPhysics] = useState(true);
@@ -36,9 +33,7 @@ const CharacterControllerDemo = () => {
 	);
 
 	return (
-		<Suspense>
-			<ambientLight intensity={0.2} />
-
+		<>
 			<Environment preset="sunset" />
 			<Sky
 				distance={4500}
@@ -46,11 +41,10 @@ const CharacterControllerDemo = () => {
 				inclination={2}
 				azimuth={0.95}
 			/>
-			<Physics>
+			<Physics timeStep="vary" paused={pausedPhysics}>
 				<PhysicsFloor />
 				<PhysicsPlatforms />
 				<RigidObjects />
-				<Slopes />
 				<Stairs position={[-9, -1, -2]} />
 				<KeyboardControls map={map}>
 					<CharacterController
@@ -59,7 +53,7 @@ const CharacterControllerDemo = () => {
 					></CharacterController>
 				</KeyboardControls>
 			</Physics>
-		</Suspense>
+		</>
 	);
 };
 

@@ -29,18 +29,18 @@ export default function PhysicsFloor() {
 	});
 
 	return (
-		<RigidBody type="fixed" userData={{ floor: true }}>
-			<mesh
-				receiveShadow
-				position={[0, -3.5, 0]}
-				name={"floor"}
-				ref={ref}
-			>
-				<boxGeometry args={[100, 5, 100]} />
+		<RigidBody
+			type="fixed"
+			userData={{ floor: true }}
+			position={[0, -3.5, 0]}
+		>
+			<mesh receiveShadow name={"floor"} ref={ref}>
+				<boxGeometry args={[40, 5, 40]} />
 				<meshStandardMaterial
 					color="gray"
 					{...textures}
-					roughness={2}
+					roughness={4}
+					metalness={0.5}
 				/>
 			</mesh>
 		</RigidBody>

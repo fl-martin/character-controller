@@ -1,4 +1,4 @@
-import modelURL from "../../assets/models/anim-model2.glb";
+import modelURL from "../../assets/models/anim-model2-transformed.glb";
 import { useEffect, useRef } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
 import { LoopOnce } from "three";

@@ -15,14 +15,20 @@ import { useGLTF } from "@react-three/drei";
 export function Stairs(props) {
 	const { nodes } = useGLTF(modelURL);
 	return (
-		<group {...props} dispose={null} scale={0.075}>
-			<RigidBody type="fixed" colliders="trimesh">
+		<group {...props} dispose={null} scale={[0.075, 0.05, 0.075]}>
+			<RigidBody
+				type="fixed"
+				colliders="trimesh"
+				userData={{ floor: true }}
+			>
 				<mesh
+					castShadow
+					receiveShadow
 					geometry={nodes.Material2.geometry}
 					position={[-30.236, 0, 0]}
 					rotation={[-Math.PI / 2, 0, 0]}
 				>
-					<meshStandardMaterial metalness={0.7} roughness={0.3} />
+					<meshStandardMaterial metalness={0.5} roughness={0.8} />
 				</mesh>
 			</RigidBody>
 		</group>

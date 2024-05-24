@@ -73,9 +73,9 @@ function CharacterController({ characterState, setCharacterState }) {
 			updateCameraTarget(position);
 
 			if (forward || backward || leftward || rightward) {
-				dirLight.current.position.x = position.x - 2;
+				//dirLight.current.position.x = position.x - 2;
 				//dirLight.current.position.y = position.y + 2;
-				dirLight.current.position.z = position.z;
+				//dirLight.current.position.z = position.z;
 				//dirLight.current.target = character.current;
 
 				angleYCameraDirection = Math.atan2(
@@ -194,16 +194,20 @@ function CharacterController({ characterState, setCharacterState }) {
 			<directionalLight
 				ref={dirLight}
 				castShadow
-				position-y={10}
+				position-y={4}
+				position-x={-4}
 				shadow-camera-left={-20}
 				shadow-camera-right={20}
 				shadow-camera-top={20}
 				shadow-camera-bottom={-20}
+				shadow-mapSize-x={2000}
+				shadow-mapSize-y={2000}
+				intensity={2}
 			/>
 			<RigidBody
 				ref={rigidbody}
 				enabledRotations={[false, false, false]}
-				position={[0, 10, 0]}
+				position={[0, -0.9, 0]}
 				colliders={false}
 				gravityScale={1.5}
 				onCollisionEnter={({ other }) => {
@@ -220,7 +224,6 @@ function CharacterController({ characterState, setCharacterState }) {
 					args={[0.5, 0.5]}
 					position={[0, 0.9, 0]}
 					restitution={0}
-					friction={1.5}
 				/>
 
 				<group ref={character}>

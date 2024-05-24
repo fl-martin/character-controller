@@ -5,6 +5,7 @@ const CharacterControllerStore = create(() => ({
 	groundObjects: {},
 	actions: {},
 	mixer: new AnimationMixer(),
+	started: false,
 }));
 
 export default CharacterControllerStore;

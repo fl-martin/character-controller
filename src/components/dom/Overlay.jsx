@@ -1,4 +1,5 @@
 import { useProgress } from "@react-three/drei";
+import mouseIcon from "../../assets/icons/mouseIcon.png";
 
 const Overlay = () => {
 	const { active } = useProgress();
@@ -37,6 +38,10 @@ const Overlay = () => {
 							</kbd>
 							<span className="text-white font-sans ">Jump</span>
 						</div>
+					</div>
+					<div className="flex items-center text-white font-sans">
+						<img src={mouseIcon} className="invert max-w-20"></img>
+						<span>Rotate camera</span>
 					</div>
 				</div>
 			)}

@@ -11,11 +11,22 @@ const CharacterControllerDemo = () => {
 	const [pausedPhysics, setPausedPhysics] = useState(true);
 
 	useEffect(() => {
-		const timeout = setTimeout(() => {
-			setPausedPhysics(false);
-		}, 500);
+		const handleVisibilityChange = () => {
+			if (document.hidden) {
+				setPausedPhysics(true);
+			} else {
+				setPausedPhysics(false);
+			}
+		};
 
-		return () => clearTimeout(timeout);
+		document.addEventListener("visibilitychange", handleVisibilityChange);
+
+		return () => {
+			document.removeEventListener(
+				"visibilitychange",
+				handleVisibilityChange
+			);
+		};
 	}, []);
 
 	const [characterState, setCharacterState] = useState("idle");
@@ -31,6 +42,14 @@ const CharacterControllerDemo = () => {
 		],
 		[]
 	);
+
+	useEffect(() => {
+		const timeout = setTimeout(() => {
+			setPausedPhysics(false);
+		}, 500);
+
+		return () => clearTimeout(timeout);
+	}, []);
 
 	return (
 		<>
@@ -58,3 +77,5 @@ const CharacterControllerDemo = () => {
 };
 
 export default CharacterControllerDemo;
+
+//buscar solucion cambiando de tipo de body cuando se cambia de tab, chequer en github y gpt que estamos usando
